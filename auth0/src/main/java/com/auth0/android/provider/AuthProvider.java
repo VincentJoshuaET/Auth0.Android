@@ -28,11 +28,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.util.Log;
+
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import android.util.Log;
 
 import com.auth0.android.auth0.R;
 
@@ -45,6 +46,7 @@ import java.util.Map;
  * Class that can handle authentication flows for different cases, asking for the required
  * permissions before attempting to start the process.
  */
+@SuppressWarnings("unused")
 public abstract class AuthProvider {
     private static final String TAG = AuthProvider.class.getSimpleName();
 
@@ -135,7 +137,6 @@ public abstract class AuthProvider {
      * @param intent      the data received on the onActivityResult() call
      * @return true if a result was expected and has a valid format, or false if not.
      */
-    @SuppressWarnings("unused")
     public abstract boolean authorize(int requestCode, int resultCode, @Nullable Intent intent);
 
     /**
@@ -146,7 +147,6 @@ public abstract class AuthProvider {
      * @param intent the data received on the onNewIntent() call
      * @return true if a result was expected and has a valid format, or false if not.
      */
-    @SuppressWarnings({"unused", "SameReturnValue"})
     public boolean authorize(@Nullable Intent intent) {
         return false;
     }

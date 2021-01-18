@@ -118,11 +118,13 @@ public open class Credentials private constructor(
 
     init {
         if (expiresAt == null && expiresIn != null) {
+            @Suppress("LeakingThis")
             this.expiresAt = Date(currentTimeInMillis + expiresIn * 1000)
         } else {
             this.expiresAt = expiresAt
         }
         this.expiresIn = if (expiresIn == null && expiresAt != null) {
+            @Suppress("LeakingThis")
             (expiresAt.time - currentTimeInMillis) / 1000
         } else {
             expiresIn
